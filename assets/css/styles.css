@@ -1,0 +1,112 @@
+/* CSS VARRIABLE  */
+:root {
+  --color-green: #36ae7c;
+  --color-blue: #187498;
+  --color-red: #eb5353;
+  --color-black: #1d1616;
+  --color-gray: #eeeeee;
+  --color-dark-gray: #e5e1da;
+  --color-white: #ffffff;
+}
+
+/* BASE STYLE  */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans";
+}
+
+select {
+  appearance: none;
+  outline: none;
+  background-color: transparent;
+  border: solid 1px var(--color-dark-gray);
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid var(--color-dark-gray);
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* LAYOUT  */
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.w-full {
+  width: 100%;
+}
+
+/* TYPOGRAPHY  */
+
+/* COMPONENTS  */
+
+.btn-add {
+  outline: none;
+  border: none;
+  font-weight: 700;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: var(--color-red);
+  outline: none;
+  border: none;
+  font-weight: 700;
+  color: var(--color-white);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: var(--color-blue);
+  outline: none;
+  border: none;
+  font-weight: 700;
+  color: var(--color-white);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.input-default {
+  outline: none;
+  border: none;
+  background-color: var(--color-gray);
+  padding: 10px;
+}
+
+.completed {
+  border: none;
+  outline: none;
+  background-color: var(--color-green);
+}
+.incomplete {
+  border: none;
+  outline: none;
+  background-color: var(--color-red);
+}
+
+/* UTILITIES  */
