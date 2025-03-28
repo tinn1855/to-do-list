@@ -1,135 +1,44 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List dạng bảng</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f2f2f2;
-        cursor: pointer;
-      }
-      tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-      .completed {
-        text-decoration: line-through;
-        color: #888;
-      }
-      .action-buttons {
-        display: flex;
-        gap: 5px;
-      }
-    </style>
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <h1>To-Do List</h1>
-
-    <div>
-      <input type="text" id="newTask" placeholder="Thêm công việc mới" />
-      <button onclick="addTask()">Thêm</button>
+    <div class="container">
+      <h1 class="text-center">TO DO LIST</h1>
+      <div class="flex gap-5">
+        <div class="w-80">
+          <label for=""></label>
+          <input
+            type="text"
+            class="input-default w-full"
+            placeholder="Add your text"
+          />
+        </div>
+        <div class="w-20">
+          <button class="btn-add w-full">Thêm</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Công Việc</th>
+            <th>Trạng Thái</th>
+            <th>Hành Động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-
-    <table id="todoTable">
-      <thead>
-        <tr>
-          <th onclick="sortTable(0)">STT</th>
-          <th onclick="sortTable(1)">Công việc</th>
-          <th onclick="sortTable(2)">Trạng thái</th>
-          <th onclick="sortTable(3)">Ngày tạo</th>
-          <th>Hành động</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Các task sẽ được thêm vào đây bằng JavaScript -->
-      </tbody>
-    </table>
-
-    <script>
-      let taskId = 1;
-
-      function addTask() {
-        const taskInput = document.getElementById("newTask");
-        const taskText = taskInput.value.trim();
-
-        if (taskText === "") {
-          alert("Vui lòng nhập công việc");
-          return;
-        }
-
-        const tableBody = document.querySelector("#todoTable tbody");
-        const newRow = tableBody.insertRow();
-
-        // STT
-        const cellId = newRow.insertCell(0);
-        cellId.textContent = taskId++;
-
-        // Tên công việc
-        const cellTask = newRow.insertCell(1);
-        cellTask.textContent = taskText;
-
-        // Trạng thái
-        const cellStatus = newRow.insertCell(2);
-        cellStatus.textContent = "Chưa hoàn thành";
-
-        // Ngày tạo
-        const cellDate = newRow.insertCell(3);
-        const now = new Date();
-        cellDate.textContent = now.toLocaleString();
-
-        // Hành động
-        const cellAction = newRow.insertCell(4);
-        cellAction.innerHTML = `
-                <div class="action-buttons">
-                    <button onclick="toggleComplete(this)">Hoàn thành</button>
-                    <button onclick="deleteTask(this)">Xóa</button>
-                </div>
-            `;
-
-        taskInput.value = "";
-      }
-
-      function toggleComplete(button) {
-        const row = button.closest("tr");
-        const statusCell = row.cells[2];
-        const taskCell = row.cells[1];
-
-        if (statusCell.textContent === "Chưa hoàn thành") {
-          statusCell.textContent = "Đã hoàn thành";
-          taskCell.classList.add("completed");
-        } else {
-          statusCell.textContent = "Chưa hoàn thành";
-          taskCell.classList.remove("completed");
-        }
-      }
-
-      function deleteTask(button) {
-        if (confirm("Bạn có chắc chắn muốn xóa công việc này?")) {
-          const row = button.closest("tr");
-          row.remove();
-        }
-      }
-
-      // Hàm sort sẽ được triển khai sau
-      function sortTable(columnIndex) {
-        alert("Tính năng sắp xếp sẽ được thêm sau");
-        // Bạn có thể thêm logic sort ở đây sau này
-      }
-    </script>
   </body>
 </html>
