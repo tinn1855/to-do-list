@@ -19,13 +19,14 @@
         <div class="w-80">
           <label for=""></label>
           <input
+            id="input-box"
             type="text"
             class="input-default w-full"
             placeholder="Add your text"
           />
         </div>
         <div class="w-20">
-          <button class="btn-add w-full">Thêm</button>
+          <button class="btn-add w-full" onclick="addTask()">Thêm</button>
         </div>
       </div>
       <table>
@@ -37,8 +38,9 @@
             <th>Hành Động</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="listTasks"></tbody>
       </table>
     </div>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
