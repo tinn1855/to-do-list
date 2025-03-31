@@ -35,7 +35,9 @@ function renderTasks() {
         </td>
         <td>
             <button class="btn-edit">Sửa</button>
-            <button class="btn-delete">Xóa</button>
+            <button class="btn-delete" onclick="deleteTask(${
+              task.id
+            })">Xóa</button>
         </td>
     `;
     tableTasks.appendChild(row);
@@ -80,3 +82,14 @@ inputBox.addEventListener("keypress", (event) => {
     addTask();
   }
 });
+
+function deleteTask(id) {
+  let indexTask = listTasks.findIndex((task) => task.id === id);
+  if (indexTask !== -1) {
+    let comfirmDeleteTask = confirm("Bạn có chắc muốn xóa công việc này?");
+    if (comfirmDeleteTask) {
+      listTasks.splice(indexTask, 1);
+      renderTasks();
+    }
+  }
+}
