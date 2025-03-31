@@ -116,8 +116,10 @@ function editTask(id) {
         task.id !== id &&
         task.description.toLowerCase() === newDescription.toLowerCase()
     );
-    if (duplicateTask) {
-      alert("Công việc này đã tồn tại trong danh sách!");
+    let confirmDuplicateTask = confirm(
+      "Công việc này đã tồn tại trong danh sách!"
+    );
+    if (!confirmDuplicateTask) {
       return;
     }
 
