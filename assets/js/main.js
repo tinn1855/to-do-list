@@ -24,7 +24,10 @@ function renderTasks() {
         </td>
         <td>${task.description}</td>
         <td>
-            <select class="${task.status}">
+            <select 
+              class="${task.status}" 
+              onchange="changeStatus(${task.id}, this.value)"
+            >
               <option value="incomplete" ${
                 task.status === "incomplete" ? "selected" : ""
               } >Chưa hoàn thành</option>
@@ -58,7 +61,7 @@ function addTask() {
   );
   if (checkTask) {
     let comfirmTask = confirm(
-      "Công việc đã có trong danh sách. Bạn có chắc chắc muốn thêm không?"
+      "Công việc đã có trong danh sách. Bạn có chắc chắn muốn thêm không?"
     );
     if (!comfirmTask) {
       return;
@@ -119,6 +122,15 @@ function editTask(id) {
     }
 
     taskDescription.description = newDescription;
+    renderTasks();
+  }
+}
+
+function changeStatus(id, newStatus) {
+  let task = listTasks.find((task) => task.id === id);
+  console.log(task);
+  if (task) {
+    task.status = newStatus;
     renderTasks();
   }
 }
