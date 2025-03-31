@@ -122,11 +122,14 @@ tr:nth-child(even) {
   border: none;
   outline: none;
   background-color: var(--color-green);
+  color: var(--color-white);
+  font-weight: 400;
 }
 .incomplete {
   border: none;
   outline: none;
   background-color: var(--color-red);
+  color: var(--color-white);
 }
 
 /* UTILITIES  */
