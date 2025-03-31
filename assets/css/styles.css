@@ -3,6 +3,9 @@
   --color-green: #36ae7c;
   --color-blue: #187498;
   --color-red: #eb5353;
+  --color-yellow: #ffa725;
+  --color-orange: #fa812f;
+  --color-dark-red: #a62c2c;
   --color-black: #1d1616;
   --color-gray: #eeeeee;
   --color-dark-gray: #e5e1da;
@@ -129,6 +132,26 @@ tr:nth-child(even) {
   border: none;
   outline: none;
   background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.high-priority {
+  border: none;
+  outline: none;
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.medium-priority {
+  border: none;
+  outline: none;
+  background-color: var(--color-orange);
+  color: var(--color-white);
+}
+.low-priority {
+  border: none;
+  outline: none;
+  background-color: var(--color-yellow);
   color: var(--color-white);
 }
 

@@ -37,6 +37,13 @@ function renderTasks() {
             </select>
         </td>
         <td>
+            <select class="high-priority">
+              <option value="high-priority">Cao</option>
+              <option value="medium-priority">Vừa</option>
+              <option value="low-priority" selected>Thấp</option>
+            </select>
+        </td>
+        <td>
             <button class="btn-edit" onclick="editTask(${task.id})">Sửa</button>
             <button class="btn-delete" onclick="deleteTask(${
               task.id
