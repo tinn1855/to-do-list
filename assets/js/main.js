@@ -6,11 +6,13 @@ const listTasks = [
     id: 1,
     description: "Quét nhà",
     status: "incomplete",
+    priority: "low-priority",
   },
   {
     id: 2,
     description: "Rửa chén",
     status: "completed",
+    priority: "high-priority",
   },
 ];
 
@@ -37,10 +39,28 @@ function renderTasks() {
             </select>
         </td>
         <td>
-            <select class="high-priority">
-              <option value="high-priority">Cao</option>
-              <option value="medium-priority">Vừa</option>
-              <option value="low-priority" selected>Thấp</option>
+            <select 
+              class="${task.priority}" 
+              onchange="changePriority(${task.id}, this.value)"
+            >
+              <option 
+                value="high-priority" 
+                ${task.priority === "high-priority" ? "selected" : ""}
+              > 
+                Cao 
+              </option>
+              <option 
+                value="medium-priority"
+                ${task.priority === "medium-priority" ? "selected" : ""}
+              >
+                Vừa
+              </option>
+              <option 
+                value="low-priority"
+                ${task.priority === "low-priority" ? "selected" : ""}
+              >
+                Thấp
+              </option>
             </select>
         </td>
         <td>
@@ -80,6 +100,7 @@ function addTask() {
     id: listTasks.length ? listTasks[listTasks.length - 1].id + 1 : 1,
     description: tasks,
     status: "incomplete",
+    priority: "low-priority",
   };
 
   listTasks.push(newTask);
@@ -140,6 +161,14 @@ function changeStatus(id, newStatus) {
   console.log(task);
   if (task) {
     task.status = newStatus;
+    renderTasks();
+  }
+}
+
+function changePriority(id, newPriority) {
+  let task = listTasks.find((task) => task.id === id);
+  if (task) {
+    task.priority = newPriority;
     renderTasks();
   }
 }
