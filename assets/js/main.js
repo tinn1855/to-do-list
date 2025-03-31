@@ -34,7 +34,7 @@ function renderTasks() {
             </select>
         </td>
         <td>
-            <button class="btn-edit">Sửa</button>
+            <button class="btn-edit" onclick="editTask(${task.id})">Sửa</button>
             <button class="btn-delete" onclick="deleteTask(${
               task.id
             })">Xóa</button>
@@ -91,5 +91,34 @@ function deleteTask(id) {
       listTasks.splice(indexTask, 1);
       renderTasks();
     }
+  }
+}
+
+function editTask(id) {
+  let taskDescription = listTasks.find((task) => task.id === id);
+  console.log(taskDescription);
+
+  if (taskDescription) {
+    let newDescription = prompt(
+      "Nhập mô tả công việc mới:",
+      taskDescription.description
+    );
+    if (newDescription === "") {
+      alert("Công việc không thể để trống!");
+      return;
+    }
+
+    let duplicateTask = listTasks.some(
+      (task) =>
+        task.id !== id &&
+        task.description.toLowerCase() === newDescription.toLowerCase()
+    );
+    if (duplicateTask) {
+      alert("Công việc này đã tồn tại trong danh sách!");
+      return;
+    }
+
+    taskDescription.description = newDescription;
+    renderTasks();
   }
 }
